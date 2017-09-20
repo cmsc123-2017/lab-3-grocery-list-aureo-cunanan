@@ -1,9 +1,14 @@
 interface IGroceryList {
+
   boolean add(GroceryItem item);
   
   boolean remove(String name);
   
   boolean markAsBought(String name);
+  
+  int totalQuantity();
+  
+  boolean reduceQuantity(String name, int quantity);
   
   void display();
 }
