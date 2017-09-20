@@ -4,10 +4,7 @@ class GroceryListArray implements IGroceryList {
   GroceryItem items[] = new GroceryItem[max];
   int size = 0;
   
-  //GroceryListArray() {}
-  GroceryListArray(GroceryItem[] items) {
-    this.items = items;
-  }
+  GroceryListArray() {}
   
   //Item --> boolean
   //checks if the this array is over the max value and makes a new array with size plus 10 the
