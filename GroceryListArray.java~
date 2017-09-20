@@ -114,9 +114,19 @@ class GroceryListArray implements IGroceryList {
   //reduces the quantity (by the int given) of this item (with the name simmilar to the given name)
   
   public boolean reduceQuantity(String name, int quantity){
-  
+    int num = 0;
+    
+    for(int i = 0; i < this.size; i++){
+      if(items[i].name.equals(name)){
+        if((items[i].quantity-quantity) < 1){
+          remove(items[i].name);
+          return true;
+        }
+        num = items[i].quantity = items[i].quantity - quantity;
+      }
+    }
+    return false;
   }
-  
   
   public void display() {
     for (int i = 0; i < this.size; i++) {
