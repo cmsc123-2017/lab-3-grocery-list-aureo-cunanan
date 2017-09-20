@@ -1,0 +1,126 @@
+class GroceryListArray implements IGroceryList {
+  
+  int max = 10;
+  GroceryItem items[] = new GroceryItem[max];
+  int size = 0;
+  
+  //GroceryListArray() {}
+  GroceryListArray(GroceryItem[] items) {
+    this.items = items;
+  }
+  
+  //Item --> boolean
+  //checks if the this array is over the max value and makes a new array with size plus 10 the
+  //current max value and copys items from the previous array to the new array
+  public boolean add(GroceryItem item) {
+    if(size == max) { //array size
+      int i = 0;
+      max = max + 10;
+      GroceryItem temp[] = new GroceryItem[max];
+      
+      for(i = 0; i < items.length; i++){
+        temp[i] = items[i];
+      }
+      temp[i + 1] = item;
+      items = temp;
+    }
+    
+    //code ni sir
+    int i = indexOf(item.name); //item quantity
+    if(i > -1) {
+      items[i].addQuantity(item.quantity);
+    } 
+    else{    
+      items[this.size] = item;
+      this.size++;
+    }
+    return true;
+  }
+  
+  // TEMPLATE
+  /*  Fields:
+   *    this.max
+   *    this.items   --GroceryItem[]
+   *    this.size
+   * 
+   *  Methods:
+   *    this.add
+   *    this.indexOf
+   *    this.remove
+   *    this.markAsBought
+   *    this.display
+   * 
+   *  Methods on this.items[i]:
+   *    this.items[i].addQuantity()
+   *    this.items[i].equals()
+   *    this.items[i].toString()
+   */
+  
+   
+  // String -> int
+  // Given the name of a GroceryItem, returns the
+  // corresponding GroceryItem index from the list. If it is not in the list,
+  //  returns -1
+  int indexOf(String name){
+    for (int i = 0; i < this.size; i++) {
+      if (this.items[i].equals(new GroceryItem(name, 0))) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  
+  //string -> boolean
+  //finds the object with the given name then deletes it from the array.
+  //If succesful return true, if not false;
+  public boolean remove(String name) {
+    boolean equal = false;
+    for (int i = 0; i < this.size; i++){
+      if (this.items[i].name.equals(name)){
+        equal = true;
+        items[i] = null;
+        this.items[i] = this.items[this.size - 1];
+        break;
+      }
+    }
+
+    max--;
+    this.size--;
+    return equal;
+  }
+  
+  //string --> boolean
+  //mark as an item with this name by making it true (it was not bought/false by default) 
+  public boolean markAsBought(String name){
+    int i = indexOf(name);
+    if(i >= 0){
+      items[i].isBought = true;
+      return true;
+    }
+    return false;
+  }
+  
+  //-->int
+  //returns the total number of this individual items in this GroceryList
+  public int totalQuantity(){
+    int quantity = 0;
+    for(int i = 0; i < size; i++){
+      quantity = quantity + items[i].quantity;
+    }
+    return quantity;
+  }
+  
+  //string, int --> boolean
+  //reduces the quantity (by the int given) of this item (with the name simmilar to the given name)
+  
+  public boolean reduceQuantity(String name, int quantity){
+  
+  }
+  
+  
+  public void display() {
+    for (int i = 0; i < this.size; i++) {
+      System.out.println(items[i]);
+    }
+  }
+}

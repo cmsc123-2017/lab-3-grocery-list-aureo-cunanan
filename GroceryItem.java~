@@ -3,9 +3,10 @@ class GroceryItem {
   int quantity;
   boolean isBought = false;
   
-  GroceryItem(String name, int quantity) {
+  GroceryItem(String name, int quantity, boolean isBought) {
     this.name = name;
     this.quantity = quantity;
+    this.isBought = isBought;
   }
   
   void addQuantity(int quantity) {

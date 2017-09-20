@@ -1,0 +1,88 @@
+import junit.framework.TestCase;
+
+public class GroceryListTest extends TestCase{
+  GroceryListArray list = new GroceryListArray();
+  
+  GroceryItem a = new GroceryItem("milk", 2);
+  GroceryItem b = new GroceryItem("bread", 1);
+  GroceryItem c = new GroceryItem("fish", 3);
+  GroceryItem d = new GroceryItem("egg", 5);
+  GroceryItem e = new GroceryItem("cheese", 1);
+  GroceryItem f = new GroceryItem("ice", 6);
+  GroceryItem g = new GroceryItem("cream", 9);
+  GroceryItem h = new GroceryItem("nato", 2);
+  GroceryItem i = new GroceryItem("takoyaki", 10);
+  GroceryItem j = new GroceryItem("icepop", 4);
+  GroceryItem k = new GroceryItem("pie", 7);
+  
+  public void testAddArray(){
+    assertTrue(list.add(a));
+    assertTrue(list.add(b));
+    assertTrue(list.add(c));
+    assertTrue(list.add(d));
+    assertTrue(list.add(e));
+    assertTrue(list.add(f));
+    assertTrue(list.add(g));
+    assertTrue(list.add(h));
+    assertTrue(list.add(i));
+    assertTrue(list.add(j));
+    assertTrue(list.add(k));
+  }
+  
+  public void testIndexOf() {
+    // add items to list
+    list.add(a);
+    list.add(b);
+    list.add(c);
+    list.add(d);
+    list.add(e);
+    list.add(f);
+    
+    assertEquals(list.indexOf(a.name), 0);
+  }
+  
+  public void testMarkasBought(){
+    list.add(a);
+    list.add(b);
+    list.add(c);
+    list.add(d);
+    list.add(e);
+    list.add(f);
+    
+    assertTrue(list.markAsBought("milk"));
+    assertFalse(list.markAsBought("clip"));
+  }
+  
+  public void testRemove(){
+    list.add(a);
+    list.add(b);
+    list.add(c);
+    list.add(d);
+    list.add(e);
+    list.add(f);
+  
+    assertTrue(list.remove(a.name));
+    assertTrue(list.remove(d.name));
+    assertTrue(list.remove(f.name));
+  }
+  
+  public void testReduceQuantity(){
+    list.add(a);
+    list.add(b);
+    list.add(c);
+    list.add(d);
+    list.add(e);
+    list.add(f);
+  
+  }
+  
+  public void testTotalQuantity(){
+    list.add(a);
+    list.add(b);
+    list.add(c);
+    list.add(d);
+    list.add(e);
+    list.add(f);
+  
+  }
+}
