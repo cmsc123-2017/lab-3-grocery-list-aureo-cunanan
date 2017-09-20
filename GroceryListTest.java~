@@ -2,7 +2,6 @@ import junit.framework.TestCase;
 
 public class GroceryListTest extends TestCase{
   GroceryListArray list = new GroceryListArray();
-  
   GroceryItem a = new GroceryItem("milk", 2);
   GroceryItem b = new GroceryItem("bread", 1);
   GroceryItem c = new GroceryItem("fish", 3);
@@ -39,6 +38,7 @@ public class GroceryListTest extends TestCase{
     list.add(f);
     
     assertEquals(list.indexOf(a.name), 0);
+    assertEquals(list.indexOf(e.name), 4);
   }
   
   public void testMarkasBought(){
@@ -66,16 +66,6 @@ public class GroceryListTest extends TestCase{
     assertTrue(list.remove(f.name));
   }
   
-  public void testReduceQuantity(){
-    list.add(a);
-    list.add(b);
-    list.add(c);
-    list.add(d);
-    list.add(e);
-    list.add(f);
-  
-  }
-  
   public void testTotalQuantity(){
     list.add(a);
     list.add(b);
@@ -83,6 +73,19 @@ public class GroceryListTest extends TestCase{
     list.add(d);
     list.add(e);
     list.add(f);
+    
+    assertEquals(list.totalQuantity(), 18);
+  }
   
+  public void testReduceQuantity(){
+    list.add(a);
+    list.add(b);
+    list.add(c);
+    list.add(d);
+    list.add(e);
+    list.add(f);
+    
+    assertTrue(list.reduceQuantity("egg", 6));
+    assertFalse(list.reduceQuantity("milk", 1));
   }
 }
